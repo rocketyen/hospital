@@ -1,6 +1,6 @@
 <?php
 require_once (dirname(__FILE__).'/../utils/database.php');
-include(dirname(__FILE__).'/../models/Patients.php');
+include(dirname(__FILE__).'/../models/Appointements.php');
 
 $error = [];
 $errorMess = 'hjkdegfr';
@@ -21,8 +21,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 
     if (empty($error)) {
-        $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail);
-        $response = $patient -> create();
+        $appointement = new Appointement($dateHour, $idPatient);
+        $response = $appointement -> CreateAppointement();
         if(!$response){
             $errorMess = 'Aille';
         }else{
