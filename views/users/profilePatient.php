@@ -2,7 +2,9 @@
 <main>
     <?= $errMess ?? '' ?>
     <div class="container">
-        <?php if(empty ($errMess)){ ?>
+        <?php if(!empty ($errMess)){
+            echo $errMess
+            ;}else{ ?>
         <h1 class="text-center text-white mt-3 mb-2">patient</h1>
         <table class="offset-2 col-8  mt-3 mb-2">
             <thead class="text-light bg-dark mt-3 mb-2 text-center">

@@ -26,6 +26,14 @@
                 <li class="nav-item" id="Connection">
                 <a href="/controllers/readPatientController.php" class="nav-link" onClick="ouverture();">Liste des patients</a>&nbsp
                 </li>
+
+                <li class="nav-item" id="Connection">
+                <a href="/controllers/addAppointementController.php" class="nav-link" onClick="ouverture();">Définir un rendez-vous</a>&nbsp
+                </li>
+
+                <li class="nav-item" id="Connection">
+                <a href="/controllers/addAppointementController.php" class="nav-link" onClick="ouverture();">Liste des rendez-vous</a>&nbsp
+                </li>
                 <img src="/assets/img/logo.jpg" class="logo">
             </ul>            
         </div>

@@ -6,8 +6,15 @@ $error = [];
 
 $id = trim(filter_input(INPUT_GET, 'patient', FILTER_SANITIZE_NUMBER_INT));
 
-$profilePatient = new Patient();
-$patients = $profilePatient->profile($id);
+// $profilePatient = new Patient();
+// $patients = $profilePatient->profile($id);
+
+$patient = Patient::profile($id);
+
+
+if($patient instanceof PDOException ){
+    $errorMess = $profilePatient->getMessage();
+};
 
 $errorMess = 'Y a un binse';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -65,7 +72,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (empty($error)) {
         $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail, $id);
         $response = $patient -> update();
-        if(!$response){
+        if($response !== true){
             $errorMess = 'Aille';
         }else{
             return true;

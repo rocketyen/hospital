@@ -13,7 +13,7 @@ class Patient
     private $_id;
 
     // fonction magique __construct
-    public function __construct($firstname = '', $lastname = '', $birthdate ='', $phone = '', $mail = '', $id = '')
+    public function __construct($firstname = '', $lastname = '', $birthdate = '', $phone = '', $mail = '', $id = '')
     {
         $this->_firstname = $firstname;
         $this->_lastname = $lastname;
@@ -39,7 +39,7 @@ class Patient
             // bindValue associe une valeur à un paramètre
             // $this = objet en cours
             $sth->bindValue(':lastname', $this->_lastname, PDO::PARAM_STR);
-            $sth->bindValue(':firstname', $this->_firstname, PDO::PARAM_STR);            
+            $sth->bindValue(':firstname', $this->_firstname, PDO::PARAM_STR);
             $sth->bindValue(':birthdate', $this->_birthdate, PDO::PARAM_STR);
             $sth->bindValue(':phone', $this->_phone, PDO::PARAM_STR);
             $sth->bindValue(':mail', $this->_mail, PDO::PARAM_STR);
@@ -55,26 +55,27 @@ class Patient
     {
         // récupérer tous les utilisateurs
         $sql = 'SELECT * FROM patients';
-        $pdo = Database::connect();
+
 
         try {
+            $pdo = Database::connect();
             // le query prepare et execute en même temps
             $sth = $pdo->query($sql);
             $patient = $sth->fetchAll();
-            return $patient;           
-
+            return $patient;
         } catch (\PDOException $e) {
             $e->getMessage();
         }
     }
 
-    
+
     public static function profile($id)
     {
         // récupérer un utilisateur
         $sql = 'SELECT * FROM `patients` WHERE `id`= :id';
-        $pdo = Database::connect();
+
         try {
+            $pdo = Database::connect();
             // On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
             $sth = $pdo->prepare($sql);
 
@@ -82,16 +83,17 @@ class Patient
             $sth->bindValue(':id', $id, PDO::PARAM_INT);
 
             // execute            
-            if($sth->execute()){
+            if ($sth->execute()) {
                 $patient = $sth->fetch();
-                if($patient){
+                if ($patient) {
                     return $patient;
-                }else{
-                    return 'n\'existe pas';
+                } else {
+                    throw new PDOException('n\'existe pas');
                 }
+            } else {
+                throw new PDOException('erreur d\'execution');
             }
-        }
-        catch (\PDOException $e) {
+        } catch (\PDOException $e) {
             return $e->getMessage();
         }
     }
@@ -99,8 +101,8 @@ class Patient
     public function update()
     {
         // modifier un utilisateur    
-        $sql = 
-        'UPDATE `patients` 
+        $sql =
+            'UPDATE `patients` 
         SET `lastname` = :lastname, 
         `firstname` = :firstname,
         `birthdate` = :birthdate,
@@ -109,28 +111,27 @@ class Patient
         WHERE `id`= :id';
 
         try {
-            
-            
             // On fait un prepare ici car on doit récupérer l'id de la requete
             $sth = $this->_pdo->prepare($sql);
 
-            // bindValue associe une valeur à un paramètre
+            // bindValue marqueur nominatif,  valeur, PDO paramètre
             $sth->bindValue(':id', $this->_id, PDO::PARAM_INT);
             $sth->bindValue(':lastname', $this->_lastname, PDO::PARAM_STR);
-            $sth->bindValue(':firstname', $this->_firstname, PDO::PARAM_STR);            
+            $sth->bindValue(':firstname', $this->_firstname, PDO::PARAM_STR);
             $sth->bindValue(':birthdate', $this->_birthdate, PDO::PARAM_STR);
             $sth->bindValue(':phone', $this->_phone, PDO::PARAM_STR);
             $sth->bindValue(':mail', $this->_mail, PDO::PARAM_STR);
 
             // execute
-            if($sth->execute()){
-                return 'lalala';
-            } else{
+            if (!$sth->execute()) {
+                throw new PDOException('Problème');
+            } else {
                 return true;
-            }                     
+            }
+
 
         } catch (\PDOException $e) {
-            $e->getMessage();
+            return $e;
         }
     }
 }

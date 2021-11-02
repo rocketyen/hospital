@@ -14,7 +14,7 @@
                                     id="lastname" 
                                     placeholder="Entrez votre nom" 
                                     name="lastname"
-                                    value="<?= htmlspecialchars($lastname ?? '') ?>"
+                                    value="<?= $patient->lastname ?>"
                                     pattern="^[\p{L}-]+$"
                                     required>
                             <p class="offset-4 col-4 text-danger">
@@ -29,7 +29,7 @@
                                     id="firstname" 
                                     placeholder="Entrez votre nom" 
                                     name="firstname"
-                                    value="<?= htmlspecialchars($firstname ?? '') ?>"
+                                    value="<?= $patient->firstname ?>"
                                     pattern="^[\p{L}-]+$"
                                     required>
                             <p class="offset-4 col-4 text-danger">
@@ -44,7 +44,7 @@
                                     id="birthdate" 
                                     placeholder="Entrez votre nom" 
                                     name="birthdate"
-                                    value="<?= htmlspecialchars($birthdate ?? '') ?>"
+                                    value="<?= $patient->birthdate ?>"
                                     pattern="[\p{N}-]+$"
                                     required>
                             <p class="offset-4 col-4 text-danger">
@@ -59,7 +59,7 @@
                                     id="phone" 
                                     placeholder="Entrez votre numéro de tel" 
                                     name="phone"
-                                    value="<?= htmlspecialchars($phone ?? '') ?>"
+                                    value="<?= $patient->phone ?>"
                                     pattern="^0[1-9][0-9]{8}$"
                                     required>
                             <p class="offset-4 col-4 text-danger">
@@ -74,7 +74,7 @@
                                     id="mail" 
                                     placeholder="exemple@mail.com"
                                     name="mail"
-                                    value="<?= htmlspecialchars($mail ?? '') ?>" 
+                                    value="<?= $patient->mail ?>" 
                                     pattern="^[[:alnum:]]([-_.]?[[:alnum:]])*@[[:alnum:]]([-.]?[[:alnum:]])*\.([a-z]{2,4})$"
                                     required>
                             <p class="offset-4 col-4 text-danger">
