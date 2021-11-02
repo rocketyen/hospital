@@ -1,0 +1,45 @@
+body {
+    background: url("/../assets/img/sky.jpg") no-repeat fixed;
+    background-size: cover;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.content {
+    opacity: 0.7;
+}
+
+.rocket{
+    background-color: #D50100;
+    color: white;
+    font-family: 'Bahnschrift';
+    opacity: 0.5;
+}
+
+.banner {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+}
+
+footer{
+    position: absolute;
+    height: 100px;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+    position: absolute;
+    right: 0; top: 0;
+    padding-bottom: 0;
+}
+nav{
+    height: 120px;
+    background-color: rgb(76,77,76);
+}
+
+
