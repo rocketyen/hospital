@@ -2,7 +2,7 @@
 
 <main>
     <div class="container">
-        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF'])?>?patient=<?=$profilePatient->id ?>" method="POST">
+        <form action="<?= htmlspecialchars($_SERVER['PHP_SELF'])?>?patient=<?=$patient->id ?? '' ?>" method="POST">
             <fieldset>
                 <legend><h1 class="text-center text-white">Formulaire de modification d'infos du patient</h1></legend>
                     <div class="row content mb-5 offset-2 col-8">

@@ -1,7 +1,7 @@
 <?php
 require_once(dirname(__FILE__) . '/../utils/database.php');
 
-class Appointement{
+class Appointements{
 
     private $_id;
     private $_dateHour;
@@ -17,12 +17,15 @@ class Appointement{
         
     }
 
-    public function CreateAppointement(){
-        // marqueurs nominatif :lastname etc
-        $sql = 'INSERT INTO `appointements` (`dateHour`, `idPatient`)
-                VALUES (:dateHour, :idPatient)`'
-                ;
+    public function createAppointement(){
+        
+        
         try {
+            // marqueurs nominatif :lastname etc
+            $sql = 'INSERT INTO `appointements` (`dateHour`, `idPatient`)
+                VALUES (:dateHour, :idPatient)`
+                JOIN `patients`
+                ON `appointements`.`idPatients` = `patients`.`id`;';
             // préparation protège des injections sql 
             // Avec un prepare au aura forcement un bindValue et un execute de sth     
             $sth = $this->_pdo->prepare($sql);

@@ -14,15 +14,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     } else{
         $error['appointDate'] = 'Date de rendez-vous manquante'; 
-    }
-
-    
-
-    
+    }    
 
     if (empty($error)) {
         $appointement = new Appointement($dateHour, $idPatient);
-        $response = $appointement -> CreateAppointement();
+        $response = $appointement -> createAppointement();
         if(!$response){
             $errorMess = 'Aille';
         }else{

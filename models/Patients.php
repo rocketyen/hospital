@@ -28,7 +28,7 @@ class Patient
     {
         // marqueurs nominatif :lastname etc
         $sql = 'INSERT INTO `patients` (`lastname`, `firstname`, `birthdate`, `phone`, `mail`) 
-                VALUES (:lastname, :firstname, :birthdate, :phone, :mail)';
+                VALUES (:lastname, :firstname, :birthdate, :phone, :mail);';
 
 
         try {
@@ -54,8 +54,7 @@ class Patient
     public static function read()
     {
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM patients';
-
+        $sql = 'SELECT * FROM patients;'; 
 
         try {
             $pdo = Database::connect();
@@ -72,7 +71,7 @@ class Patient
     public static function profile($id)
     {
         // récupérer un utilisateur
-        $sql = 'SELECT * FROM `patients` WHERE `id`= :id';
+        $sql = 'SELECT * FROM `patients` WHERE `id`= :id;';
 
         try {
             $pdo = Database::connect();
@@ -108,7 +107,7 @@ class Patient
         `birthdate` = :birthdate,
         `phone` = :phone,
         `mail` = :mail 
-        WHERE `id`= :id';
+        WHERE `id`= :id;';
 
         try {
             // On fait un prepare ici car on doit récupérer l'id de la requete

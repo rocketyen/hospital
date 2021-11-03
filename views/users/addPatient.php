@@ -81,12 +81,9 @@
                             <?= $error['mail'] ?? null ?>
                             </p>
                         </div>                    
-                    <div class="button">
-                        <button type="submit" class="btn btn-primary offset-4 col-4 mt-3 mb-5">Ajouter un Patient</button>
-                    </div>
-                    <div class="button">
-                        <a href="/controllers/readPatientController.php" class="offset-5 col-8 text-light bg-dark mt-3 mb-2 text-center">Consulter la liste des patients</a>
-                    </div>
+                        <div class="button">
+                            <button type="submit" class="btn btn-primary offset-4 col-4 mt-3 mb-5">Ajouter un Patient</button>
+                        </div>
                     </div>
                 </fieldset>
         </form>
