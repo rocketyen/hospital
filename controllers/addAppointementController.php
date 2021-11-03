@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }    
 
     if (empty($error)) {
-        $appointement = new Appointement($dateHour, $idPatient);
+        $appointement = new Appointements($dateHour, $idPatient);
         $response = $appointement -> createAppointement();
         if(!$response){
             $errorMess = 'Aille';
