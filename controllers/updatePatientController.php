@@ -70,7 +70,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     if (empty($error)) {
-        $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail, $id);
+        $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail);
         $response = $patient -> update();
         if($response !== true){
             $errorMess = 'Aille';
