@@ -25,10 +25,16 @@
                     <!-- patient -->
                     <div class="form-group offset-4 col-4  mt-3 mb-2">
                         <label for="" class="text-light bg-dark">Choisissez un patient : </label>
+
                         <select type="text" class="form-control" id="patient" placeholder="Choisissez un patient" name="patient" value="<?= htmlspecialchars($patient ?? '') ?>" pattern="^[\p{L}-]+$" required>
-                            <p class="offset-4 col-4 text-danger">
-                                <?= $error['patient'] ?? null ?>
-                            </p>
+                            <?php foreach ($patients as $patient) : ?>
+                                <option value="">
+
+                                </option>
+                                <p class="offset-4 col-4 text-danger">
+                                    <?= $error['patient'] ?? null ?>
+                                </p>                        
+                            <?php endforeach ?>
                         </select>
                     </div>
                     <div class="button">
