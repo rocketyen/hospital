@@ -13,7 +13,7 @@ class Patient
     private $_id;
 
     // fonction magique __construct
-    public function __construct($firstname = '', $lastname = '', $birthdate = '', $phone = '', $mail = '', $id = '')
+    public function __construct($lastname = '', $firstname = '', $birthdate = '', $phone = '', $mail = '', $id = '')
     {
         $this->_firstname = $firstname;
         $this->_lastname = $lastname;
@@ -93,7 +93,7 @@ class Patient
                 throw new PDOException('erreur d\'execution');
             }
         } catch (\PDOException $e) {
-            return $e->getMessage();
+            return $e;
         }
     }
 

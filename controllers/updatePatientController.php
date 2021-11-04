@@ -4,22 +4,18 @@ include(dirname(__FILE__).'/../models/Patients.php');
 
 $error = [];
 
-$id = trim(filter_input(INPUT_GET, 'patient', FILTER_SANITIZE_NUMBER_INT));
-
-// $profilePatient = new Patient();
-// $patients = $profilePatient->profile($id);
+$id = intval(trim(filter_input(INPUT_GET, 'patient', FILTER_SANITIZE_NUMBER_INT)));
 
 $patient = Patient::profile($id);
 
-
 if($patient instanceof PDOException ){
-    $errorMess = $profilePatient->getMessage();
+    $errorMess = $patient->getMessage();
 };
 
 $errorMess = 'Y a un binse';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-    $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
+    $firstname = trim(filter_input(INPUT_POST, 'firstname', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));    
     $regexFirstname = "/^[\p{L}-]+$/";
     if(!empty($firstname)){    
         if(!preg_match($regexFirstname, $firstname)){
@@ -70,12 +66,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     if (empty($error)) {
-        $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail);
-        $response = $patient -> update();
+        $patients = new Patient($lastname, $firstname, $birthdate, $phone, $mail, $id);
+        $response = $patients -> update();
         if($response !== true){
             $errorMess = 'Aille';
-        }else{
-            return true;
         }
     }
 }
