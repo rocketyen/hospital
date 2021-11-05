@@ -100,11 +100,18 @@ class Appointments{
 	public static function readAppointment()
     {
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM appointments;'; 
+        $sql = 'SELECT `appointments`.`id`, 
+		`patients`.`lastname`, 
+		`patients`.`firstname`, 
+		`patients`.`phone`,
+		`appointments`.`dateHour` 
+		FROM `appointments`
+		INNER JOIN `patients`
+		ON `patients`.`id` = `appointments`.`idPatients`;'; 
 
         try {
             $pdo = Database::connect();
-            // le query prepare et execute en même temps
+            // le query  execute la requète
             $sth = $pdo->query($sql);
             $appointment = $sth->fetchAll();
             return $appointment;
