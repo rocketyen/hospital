@@ -28,11 +28,11 @@
                 </li>
 
                 <li class="nav-item" id="Connection">
-                <a href="/controllers/addAppointementController.php" class="nav-link" onClick="ouverture();">Définir un rendez-vous</a>&nbsp
+                <a href="/controllers/addAppointmentController.php" class="nav-link" onClick="ouverture();">Définir un rendez-vous</a>&nbsp
                 </li>
 
                 <li class="nav-item" id="Connection">
-                <a href="/controllers/addAppointementController.php" class="nav-link" onClick="ouverture();">Liste des rendez-vous</a>&nbsp
+                <a href="/controllers/readAppointmentController.php" class="nav-link" onClick="ouverture();">Liste des rendez-vous</a>&nbsp
                 </li>
                 <img src="/assets/img/logo.jpg" class="logo">
             </ul>            
