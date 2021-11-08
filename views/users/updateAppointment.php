@@ -24,6 +24,8 @@
                     <select name="patientId" class="no_border pointer p-2  rounded">
                         <?php foreach ($patients as $patient) :
                             $selected = ($idPatients === $patient->id) ? 'selected' : '';
+                            var_dump($selected);
+                            die;
                         ?>
                             <option value="<?= $patient->id ?>" <?= $selected ?>><?= $patient->lastname ?> <?= $patient->firstname ?></option>
                         <?php endforeach ?>
@@ -38,7 +40,6 @@
                     <select name="appointHour" id="hour" class="no_border pointer p-2  rounded">
                         <?php foreach ($appointHours as $hour_value) :
                             $selected = ($appointHour === $hour_value) ? 'selected="selected"' : '';
-                            // var_dump($appointHour);
                         ?>
                             <option value="<?= $hour_value ?>" <?= $selected ?>><?= $hour_value ?>h</option>
                         <?php endforeach ?>

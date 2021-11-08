@@ -66,6 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     if (empty($error)) { 
 
         $appointments = new Appointments($id, $dateHour, $idPatients);
+        $patients = new Patient($lastname, $firstname, $birthdate, $phone, $mail, $id);
         var_dump($appointments);
         die;    
         
