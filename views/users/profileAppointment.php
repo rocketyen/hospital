@@ -5,19 +5,23 @@
             echo $errMess
             ;}else{ ?>
         <h1 class="text-center text-white mt-3 mb-2">Détail du rendez-vous</h1>
-        <table class="offset-2 col-8  mt-3 mb-2">
+        <table class="offset-1 col-10  mt-3 mb-2">
             <thead class="text-light bg-dark mt-3 mb-2 text-center">
                 <tr>
-                    <th>ID Rendez-vous</th>
-                    <th>Date</th>
-                    <th>ID Patient</th>
+                <th>ID Rendez-vous</th>                    
+                    <th>Nom du Patient</th>
+                    <th>Prénom du Patient</th>
+                    <th>Téléphone du Patient</th>
+                    <th>Date du rendez-vous</th>
                 </tr>
             </thead>
             <tbody class="text-light bg-dark mt-3 mb-2 text-center">                
                     <tr>
                         <td><?= $result->id; ?></td>
+                        <td><?= $result->lastname; ?></td>
+                        <td><?= $result->firstname; ?></td>
+                        <td><?= $result->phone; ?></td>
                         <td><?= $result->dateHour; ?></td>
-                        <td><?= $result->idPatients; ?></td>
                         <td><a href="/controllers/updateAppointmentController.php?patient=<?= $result->id ?>">
                         <button>Modifier les informations du patient</button></a></td>
                     </tr>

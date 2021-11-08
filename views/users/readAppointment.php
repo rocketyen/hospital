@@ -8,7 +8,7 @@
                     <th>Nom du Patient</th>
                     <th>Prénom du Patient</th>
                     <th>Téléphone du Patient</th>
-                    <th>Date</th>                  
+                    <th>Date du rendez-vous</th>                  
                 </tr>
             </thead>
             <tbody class="text-light bg-dark mt-3 mb-2 text-center">

@@ -33,7 +33,7 @@ class Patient
 
         try {
             // préparation protège des injections sql 
-            // Avec un prepare au aura forcement un bindValue et un execute de sth     
+            // Avec un prepare on aura forcement un bindValue et un execute de sth     
             $sth = $this->_pdo->prepare($sql);
 
             // bindValue associe une valeur à un paramètre
