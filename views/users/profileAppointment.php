@@ -22,7 +22,7 @@
                         <td><?= $result->firstname; ?></td>
                         <td><?= $result->phone; ?></td>
                         <td><?= $result->dateHour; ?></td>
-                        <td><a href="/controllers/updateAppointmentController.php?patient=<?= $result->id ?>">
+                        <td><a href="/controllers/updateAppointmentController.php?updateAppointment=<?= $result->id ?>">
                         <button>Modifier les informations du patient</button></a></td>
                     </tr>
             </tbody>

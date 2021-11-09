@@ -64,13 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     }
         
     if (empty($error)) { 
-
-        $appointments = new Appointments($id, $dateHour, $idPatients);
-        $patients = new Patient($lastname, $firstname, $birthdate, $phone, $mail, $id);
-        var_dump($appointments);
-        die;    
+        $dateHour = "$appointDate $appointHour:00:00";
         
-        $response = $appointment -> updateAppointment();
+        $appointments = new Appointments($id, $dateHour, $idPatients);        
+        $response = $appointments -> updateAppointment();
+        
         if($response !== true){
             $errorMess = 'Aille';
         }

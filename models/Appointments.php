@@ -119,7 +119,8 @@ class Appointments
 		`appointments`.`dateHour` 
 		FROM `appointments`
 		INNER JOIN `patients`
-		ON `patients`.`id` = `appointments`.`idPatients`;';
+		ON `patients`.`id` = `appointments`.`idPatients`
+		WHERE `appointments`.`id`= :id;';
 
 		try {
 			$pdo = Database::connect();
