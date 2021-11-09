@@ -8,7 +8,7 @@
         <table class="offset-1 col-10  mt-3 mb-2">
             <thead class="text-light bg-dark mt-3 mb-2 text-center">
                 <tr>
-                <th>ID Rendez-vous</th>                    
+                    <th>ID Rendez-vous</th>                    
                     <th>Nom du Patient</th>
                     <th>Prénom du Patient</th>
                     <th>Téléphone du Patient</th>
@@ -23,7 +23,7 @@
                         <td><?= $result->phone; ?></td>
                         <td><?= $result->dateHour; ?></td>
                         <td><a href="/controllers/updateAppointmentController.php?updateAppointment=<?= $result->id ?>">
-                        <button>Modifier les informations du patient</button></a></td>
+                        <button>Modifier le rendez-vous</button></a></td>
                     </tr>
             </tbody>
         </table>
