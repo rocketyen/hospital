@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
 
     // LASTNAME VERIFICATION //    
     $idPatients = intval(trim(filter_input(INPUT_POST, 'patientId', FILTER_SANITIZE_NUMBER_INT)));
-    $regexpatientId = "/^[\p{N}-]+$/";    
+    $regexpatientId = "/^[\p{N}-]+$/";   
     if (!empty($idPatients)) {
         
         if (!preg_match($regexpatientId, $idPatients)) {
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     if (empty($error)) { 
         $dateHour = "$appointDate $appointHour:00:00";
         
-        $appointments = new Appointments($id, $dateHour, $idPatients);        
+        $appointments = new Appointments($id, $dateHour, $idPatients);         
         $response = $appointments -> updateAppointment();
         
         if($response !== true){
