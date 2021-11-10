@@ -15,6 +15,7 @@ $patients = Patient::read();
 $idPatients = 0;
 $appointHour = 0;
 
+
 /********************** CONTROL FORM'S VALUES **********************/
 /*Varaiables to verify*/
 $errors = [];
