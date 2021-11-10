@@ -147,6 +147,8 @@ class Patient
 		ON `patients`.`id` = `appointments`.`idPatients`
 		WHERE `appointments`.`id`= :id;'; 
 
+        
+
         try {
             $pdo = Database::connect();
             // le query prepare et execute en même temps

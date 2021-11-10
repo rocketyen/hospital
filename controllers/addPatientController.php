@@ -15,6 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else{
         $error['firstname'] = 'prénom manquant';
     }
+    
 
     $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES));
     $regexLastname = "/^[\p{L}-]+$/";
@@ -26,6 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $error['lastname'] = 'Nom manquant';         
     }
 
+
     $birthdate = trim(filter_input(INPUT_POST, 'birthdate', FILTER_SANITIZE_STRING));
     $regexBirthdate = "/^[\p{N}-]+$/";
     if(!empty($birthdate)){ 
@@ -35,6 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else{
         $error['birthdate'] = 'Date de naissance manquante'; 
     }
+
 
     $phone = trim(filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_STRING));
     $regexPhone = "/^0[1-9][0-9]{8}$/";
@@ -46,6 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $error['phone'] = 'Téléphone manquant'; 
     }
 
+
     $mail = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
     $regexMail = "/^[[:alnum:]]([-_.]?[[:alnum:]])*@[[:alnum:]]([-.]?[[:alnum:]])*\.([a-z]{2,4})$/";
     if(!empty($mail)){ 
@@ -55,6 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else{
         $error['mail'] = 'Mail  manquant'; 
     }
+    
 
     if (empty($error)) {
         $patient = new Patient($lastname, $firstname, $birthdate, $phone, $mail);
