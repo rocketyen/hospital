@@ -46,12 +46,11 @@
                         <label for="date">Date<span>*</span> :</label>
                         <input type="date" name="appointDate" value="<?= htmlentities($_POST['date'] ?? '') ?>" required="required" size="30" class="p-2  no_border pointer">
                         <span class="text-danger fs-09"><?= $errors['dateError'] ?? '' ?></span>
-                    </div>
-                    <div class="d-flex flex-center mb-3">
-                        <input type="submit" value="Modifier le rendez-vous" class="btn bg-light offset-4 col-4  mt-3 mb-2">
-                    </div>
+                    </div>                    
             </fieldset>
-
+                <div class="d-flex flex-center mb-3">
+                            <input type="submit" value="Modifier le rendez-vous" class="btn bg-light offset-4 col-4  mt-3 mb-2">
+                </div>
         </form>
     </div>
 </main>

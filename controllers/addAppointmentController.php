@@ -51,8 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     // DATE VERIFICATION //
     $appointDate = trim(filter_input(INPUT_POST, 'appointDate', FILTER_SANITIZE_STRING));
     $regexAppointDate = "/^[\p{N}-]+$/";
-    // var_dump($appointDate);
-    // die;
     if (!empty($appointDate)) {
         if (!preg_match($regexAppointDate, $appointDate)) {
             $error['appointDate'] = 'Date de rendez-vous invalide';
@@ -61,25 +59,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
         $error['appointDate'] = 'Date de rendez-vous manquante';
     }
     
+    
 
 
     /*create appointment*/
     if (empty($errors)) {
         
         // if $date >= today's date
-        if ($appointDate >= date('Y-m-d')) {
+        if ($appointDate >= date('Y-m-d')) {           
             
             //formate date & hour
             $dateHour = "$appointDate $appointHour:00:00";
+            
             $appointment = new Appointments($dateHour, $idPatients);
             
             $created_appointment = $appointment->createAppointment();
+            
 
             // if the appointment reponse is an error, show it
             if ($created_appointment instanceof PDOException) {
 
                 $code = $created_appointment->getCode();
                 $returned_message = ERRORS_ARRAY[$code];
+                
             } else {
                 $returned_message = 'Le rendez-vous a bien été enregistré.';
                 /* ! DEVELOPPER PART : DEBUG ! */

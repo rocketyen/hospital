@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
         $dateHour = "$appointDate $appointHour:00:00";
         
         
-        $appointments = new Appointments($id, $dateHour, $idPatients);         
+        $appointments = new Appointments($dateHour, $idPatients);         
         $response = $appointments -> updateAppointment();
         
         if($response !== true){

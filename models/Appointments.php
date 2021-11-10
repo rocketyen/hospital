@@ -12,7 +12,7 @@ class Appointments
 
 	// fonction magique __construct
 	// SELECT * FROM `appointments`
-	public function __construct($id = '', $dateHour = '', $idPatients = '')
+	public function __construct($dateHour = '', $idPatients = '', $id = '')
 	{
 		try {
 			$this->_dateHour = $dateHour;
@@ -151,8 +151,8 @@ class Appointments
 		// modifier un rdv   
 		$sql =
 			'UPDATE `appointments` 
-        SET `dateHour` = :dateHour
-        WHERE `id`= :id;';
+        	SET `dateHour` = :dateHour
+        	WHERE `id`= :id;';
 
 		try {
 			// On fait un prepare ici car on doit récupérer l'id de la requete

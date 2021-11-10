@@ -14,8 +14,8 @@
             <tbody class="text-light bg-dark mt-3 mb-2 text-center">
                 <?php foreach ($patients as $patient) : ?>
                     <tr>
-                        <td><?= $patient->firstname; ?></td>
                         <td><?= $patient->lastname; ?></td>
+                        <td><?= $patient->firstname; ?></td>                        
                         <td><?= $patient->birthdate; ?></td>
                         <td><?= $patient->phone; ?></td>
                         <td><?= $patient->mail; ?></td>

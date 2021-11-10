@@ -38,7 +38,7 @@
                     <select name="appointHour" id="hour" class="no_border pointer p-2  rounded">
                         <?php foreach ($appointHours as $hour_value) :
                             $selected = ($appointHour === $hour_value) ? 'selected="selected"' : '';
-                            // var_dump($appointHour);
+                            
                         ?>
                             <option value="<?= $hour_value ?>" <?= $selected ?>><?= $hour_value ?>h</option>
                         <?php endforeach ?>
@@ -48,7 +48,12 @@
 
                 <div class="d-flex flex-column mb-3">
                     <label for="date">Date<span>*</span> :</label>
-                    <input type="date" id="inputDate" name="appointDate" value="<?= htmlentities($_POST['date'] ?? '') ?>" required="required" size="30" class="p-2  no_border pointer">
+                    <input  type="date" 
+                            name="appointDate" 
+                            value="<?= htmlentities($_POST['date'] ?? '') ?>" 
+                            required="required" 
+                            size="30" 
+                            class="p-2  no_border pointer">
                     <span class="text-danger fs-09"><?= $errors['dateError'] ?? '' ?></span>
                 </div>
         </fieldset>
