@@ -11,6 +11,7 @@
                     <th>Date du rendez-vous</th>                  
                 </tr>
             </thead>
+            
             <tbody class="text-light bg-dark mt-3 mb-2 text-center">
                 <?php foreach ($appointments as $appointment) : ?>
                     <tr>

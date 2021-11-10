@@ -58,9 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     } else {
         $error['appointDate'] = 'Date de rendez-vous manquante';
     }
-    
-    
-
 
     /*create appointment*/
     if (empty($errors)) {

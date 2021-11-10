@@ -145,9 +145,7 @@ class Patient
 		FROM `appointments`
 		INNER JOIN `patients`
 		ON `patients`.`id` = `appointments`.`idPatients`
-		WHERE `appointments`.`id`= :id;'; 
-
-        
+		WHERE `appointments`.`id`= :id;';        
 
         try {
             $pdo = Database::connect();

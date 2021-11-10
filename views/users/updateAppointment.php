@@ -34,7 +34,6 @@
                         <select name="appointHour" class="no_border pointer p-2  rounded">
                             <?php foreach ($appointHours as $hour_value) :
                                 $selected = ($appointHour === $hour_value) ? 'selected="selected"' : '';
-
                             ?>
                                 <option value="<?= $hour_value ?>"><?= $hour_value ?>h</option>
                             <?php endforeach ?>

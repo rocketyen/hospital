@@ -14,7 +14,7 @@
                     <th>Téléphone du Patient</th>
                     <th>Date du rendez-vous</th>
                 </tr>
-            </thead>
+            </thead>            
             <tbody class="text-light bg-dark mt-3 mb-2 text-center">                
                     <tr>
                         <td><?= $result->id; ?></td>

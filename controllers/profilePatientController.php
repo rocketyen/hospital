@@ -9,6 +9,7 @@ if(!is_object($result)){
     $errMess = $result;
 }
 
+
 include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__).'/../views/users/profilePatient.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');

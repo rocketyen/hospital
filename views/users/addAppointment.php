@@ -30,7 +30,6 @@
                     </select>
                     <span class="text-danger fs-09"><?= $errors['patientError'] ?? '' ?></span>
                 </div>
-
                 <!-- date & hour -------------- -->
                 <div class="d-flex flex-column mb-3">
                     <label for="hour">Heure<span>*</span> :</label>

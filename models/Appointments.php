@@ -146,6 +146,7 @@ class Appointments
 		}
 	}
 
+
 	public function updateAppointment()
 	{
 		// modifier un rdv   
@@ -153,6 +154,7 @@ class Appointments
 			'UPDATE `appointments` 
         	SET `dateHour` = :dateHour
         	WHERE `id`= :id;';
+
 
 		try {
 			// On fait un prepare ici car on doit récupérer l'id de la requete
