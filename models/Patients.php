@@ -126,7 +126,6 @@ class Patient
                 return true;
             }
 
-
         } catch (\PDOException $e) {
             return $e;
         }
