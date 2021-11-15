@@ -29,7 +29,6 @@ class Patient
         $sql = 'INSERT INTO `patients` (`lastname`, `firstname`, `birthdate`, `phone`, `mail`) 
                 VALUES (:lastname, :firstname, :birthdate, :phone, :mail);';
 
-
         try {
             // préparation protège des injections sql 
             // Avec un prepare on aura forcement un bindValue et un execute de sth     
