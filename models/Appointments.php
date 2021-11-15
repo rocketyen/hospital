@@ -151,8 +151,8 @@ class Appointments
 		// modifier un rdv   
 		$sql =
 			'UPDATE `appointments` 
-        	SET `dateHour` = :dateHour
-        	WHERE `id`= :id;';
+        SET `dateHour` = :dateHour
+        WHERE `id`= :id;';
 
 		try {
 			// On fait un prepare ici car on doit récupérer l'id de la requete
