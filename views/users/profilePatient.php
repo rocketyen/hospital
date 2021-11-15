@@ -4,7 +4,7 @@
         <?php if (!empty($errMess)) {
             echo $errMess;
         } else { ?>        
-            <h1 class="text-center text-white mt-3 mb-2">patient</h1>
+            <h1 class="text-center text-white mt-3 mb-2">Patient</h1>
             <table class="offset-2 col-8  mt-3 mb-2">
                 <thead class="text-light bg-dark mt-3 mb-2 text-center">
                     <tr>
@@ -26,6 +26,22 @@
                                 <button>Modifier les informations du patient</button></a></td>
                     </tr>
                 </tbody>
+            </table>
+            <h1 class="text-center text-white mt-3 mb-2">Rendez-vous du patient</h1>
+            <table class="offset-2 col-8  mt-3 mb-2">
+                <thead class="text-light bg-dark mt-3 mb-2 text-center">
+                    <tr>
+                        <th>ID rendez-vous</th>
+                        <th>Date et heure du rendez-vous</th>
+                    </tr>
+                </thead>
+                <tbody class="text-light bg-dark mt-3 mb-2 text-center">                    
+                    <?php foreach ($results2 as $result2) : ?>
+                        <tr>
+                            <td><?= $result2->id; ?></td>
+                            <td><?= $result2->dateHour; ?></td>
+                        </tr>
+                    <?php endforeach ?>
             </table>
         <?php } ?>
     </div>

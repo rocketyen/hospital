@@ -86,22 +86,27 @@ class Appointments
 		}
 	}
 
-	public static function readAppointment()
+	public static function readAppointment($id = null)
 	{
-		// récupérer tous les utilisateurs
-		$sql = 'SELECT `appointments`.`id`, 
-		`patients`.`lastname`, 
-		`patients`.`firstname`, 
-		`patients`.`phone`,
-		`appointments`.`dateHour` 
-		FROM `appointments`
-		INNER JOIN `patients`
-		ON `patients`.`id` = `appointments`.`idPatients`;';
+
+		if (is_null($id)) {
+			// récupérer tous les utilisateurs
+			$sql = 'SELECT `appointments`.`id`,`dateHour`, `lastname`, `firstname` 
+			FROM `appointments` 
+			INNER JOIN `patients` ON `appointments`.`idPatients` = `patients`.`id`';
+		} else {
+			$sql = 'SELECT `appointments`.`id`,`dateHour` FROM `appointments` 
+			INNER JOIN `patients` ON `appointments`.`idPatients` = `patients`.`id` 
+			WHERE `patients`.`id` = :id ';
+		}
 
 		try {
 			$pdo = Database::connect();
-			// le query  execute la requète
-			$sth = $pdo->query($sql);
+			$sth = $pdo->prepare($sql);
+			if (!is_null($id)) {
+				$sth->bindValue(':id', $id, PDO::PARAM_INT);
+			}
+			$sth->execute();
 			$appointment = $sth->fetchAll();
 			return $appointment;
 		} catch (\PDOException $e) {
@@ -173,27 +178,34 @@ class Appointments
 		}
 	}
 
-	public static function readPatientAppoitment()
-    {
-        // récupérer tous les utilisateurs
-        $sql = 'SELECT `appointments`.`id`, 
-		`patients`.`lastname`, 
-		`patients`.`firstname`, 
-		`patients`.`phone`,
-		`appointments`.`dateHour` 
-		FROM `appointments`
-		INNER JOIN `patients`
-		ON `patients`.`id` = `appointments`.`idPatients`
-		WHERE `appointments`.`id`= :id;';        
+	public static function deleteAppointment($id)
+	{
+		// modifier un rdv   
+		$sql =
+			'DELETE FROM `appointments`
+        WHERE `id`= :id;';
 
-        try {
-            $pdo = Database::connect();
-            // le query prepare et execute en même temps
-            $sth = $pdo->query($sql);
-            $patient = $sth->fetchAll();
-            return $patient;
-        } catch (\PDOException $e) {
-            $e->getMessage();
-        }		
-    }
+		try {
+			$pdo = Database::connect();
+			// On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
+			$sth = $pdo->prepare($sql);
+
+			// bindValue associe une valeur à un paramètre
+			$sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+			// execute            
+			if ($sth->execute()) {
+				$appointment = $sth->fetch();
+				if ($appointment) {
+					return $appointment;
+				} else {
+					throw new PDOException('n\'existe pas');
+				}
+			} else {
+				throw new PDOException('erreur d\'execution');
+			}
+		} catch (\PDOException $e) {
+			return $e;
+		}
+	}
 }

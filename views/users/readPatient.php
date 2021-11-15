@@ -21,6 +21,7 @@
                         <td><?= $patient->phone; ?></td>
                         <td><?= $patient->mail; ?></td>
                         <td><a href="/controllers/profilePatientController.php?patient=<?= $patient->id ?>"><button>Infos</button></a></td>
+                        <td><a href="/controllers/deletePatientController.php?patient=<?= $patient->id ?>"><button>Supprimer</button></a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

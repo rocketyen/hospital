@@ -51,13 +51,20 @@ class Patient
 
     public static function read()
     {
+        $search = htmlspecialchars($_GET['search']);
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM patients;'; 
+        $sql = 'SELECT * FROM patients
+        WHERE `lastname` LIKE :s
+        OR `firstname` LIKE :s;'; 
 
         try {
             $pdo = Database::connect();
             // le query prepare et execute en même temps
-            $sth = $pdo->query($sql);
+            $s = "%" . $search . "%";
+            $sth = $pdo->prepare($sql);
+
+            $sth->bindValue(':s', $s, PDO::PARAM_STR);
+
             $patient = $sth->fetchAll();
             return $patient;
         } catch (\PDOException $e) {
@@ -131,29 +138,38 @@ class Patient
         }
     }
 
-    public static function readPatientAppoitment()
-    {
-        // récupérer tous les utilisateurs
-        $sql = 'SELECT `appointments`.`id`, 
-		`patients`.`lastname`, 
-		`patients`.`firstname`, 
-		`patients`.`phone`,
-		`appointments`.`dateHour` 
-		FROM `appointments`
-		INNER JOIN `patients`
-		ON `patients`.`id` = `appointments`.`idPatients`
-		WHERE `appointments`.`id`= :id;';        
+    public static function deletePatient($id)
+	{
+		// Un patient et ses rdv   
+		$sql =
+			'DELETE FROM `patients`            
+        WHERE `id`= :id;';
 
-        try {
-            $pdo = Database::connect();
-            // le query prepare et execute en même temps
-            $sth = $pdo->query($sql);
-            $patient = $sth->fetchAll();
-            return $patient;
-        } catch (\PDOException $e) {
-            $e->getMessage();
-        }
-    }
+		try {
+			$pdo = Database::connect();
+			// On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
+			$sth = $pdo->prepare($sql);
+
+			// bindValue associe une valeur à un paramètre
+			$sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+			// execute            
+			if ($sth->execute()) {
+				$patient = $sth->fetch();
+				if ($patient) {
+					return $patient;
+				} else {
+					throw new PDOException('unkknow');
+				}
+			} else {
+				throw new PDOException('erreur d\'execution');
+			}
+		} catch (\PDOException $e) {
+			return $e;
+		}
+	}
+
+
     
 }
 

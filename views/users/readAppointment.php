@@ -7,7 +7,6 @@
                     <th>ID Rendez-vous</th>                    
                     <th>Nom du Patient</th>
                     <th>Prénom du Patient</th>
-                    <th>Téléphone du Patient</th>
                     <th>Date du rendez-vous</th>                  
                 </tr>
             </thead>
@@ -18,9 +17,9 @@
                         <td><?= $appointment->id; ?></td>
                         <td><?= $appointment->lastname; ?></td>
                         <td><?= $appointment->firstname; ?></td>
-                        <td><?= $appointment->phone; ?></td>
                         <td><?= $appointment->dateHour; ?></td>                       
                         <td><a href="/controllers/profileAppointmentController.php?appointment=<?= $appointment->id ?>"><button>Infos</button></a></td>
+                        <td><a href="/controllers/deleteAppointmentController.php?appointment=<?= $appointment->id ?>"><button>Supprimer</button></a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
