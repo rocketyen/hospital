@@ -3,7 +3,6 @@ require_once(dirname(__FILE__) . '/../utils/database.php');
 
 class Patient
 {
-
     private $_firstname;
     private $_lastname;
     private $_birthdate;
