@@ -51,20 +51,13 @@ class Patient
 
     public static function read()
     {
-        $search = htmlspecialchars($_GET['search']);
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM patients
-        WHERE `lastname` LIKE :s
-        OR `firstname` LIKE :s;'; 
+        $sql = 'SELECT * FROM patients;'; 
 
         try {
             $pdo = Database::connect();
             // le query prepare et execute en même temps
-            $s = "%" . $search . "%";
-            $sth = $pdo->prepare($sql);
-
-            $sth->bindValue(':s', $s, PDO::PARAM_STR);
-
+            $sth = $pdo->query($sql);
             $patient = $sth->fetchAll();
             return $patient;
         } catch (\PDOException $e) {
