@@ -152,7 +152,7 @@ class Patient
 				if ($patient) {
 					return $patient;
 				} else {
-					throw new PDOException('unkknow');
+					throw new PDOException('unknow');
 				}
 			} else {
 				throw new PDOException('erreur d\'execution');
