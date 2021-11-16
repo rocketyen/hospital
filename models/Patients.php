@@ -143,16 +143,16 @@ class Patient
 			// On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
 			$sth = $pdo->prepare($sql);
 
-			// bindValue associe une valeur à un paramètre
+			// bindValue associe une valeur à un marqueur nominatif
 			$sth->bindValue(':id', $id, PDO::PARAM_INT);
 
 			// execute            
 			if ($sth->execute()) {
-				$patient = $sth->fetch();
-				if ($patient) {
-					return $patient;
+				$nbDltUtil = $sth->rowCount();
+				if ($nbDltUtil > 0) {
+					return $nbDltUtil;
 				} else {
-					throw new PDOException('unknow');
+					throw new PDOException('aucun utilisateur supprimé');
 				}
 			} else {
 				throw new PDOException('erreur d\'execution');
