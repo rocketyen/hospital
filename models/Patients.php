@@ -52,7 +52,7 @@ class Patient
     public static function read()
     {
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM patients;'; 
+        $sql = 'SELECT * FROM patients;';
 
         try {
             $pdo = Database::connect();
@@ -99,7 +99,7 @@ class Patient
     {
         // modifier un utilisateur    
         $sql =
-        'UPDATE `patients` 
+            'UPDATE `patients` 
         SET `lastname` = :lastname, 
         `firstname` = :firstname,
         `birthdate` = :birthdate,
@@ -125,49 +125,53 @@ class Patient
             } else {
                 return true;
             }
-
         } catch (\PDOException $e) {
             return $e;
         }
     }
 
     public static function deletePatient($id)
-	{
-		// Un patient et ses rdv   
-		$sql =
-			'DELETE FROM `patients`            
+    {
+        // Un patient et ses rdv   
+        $sql =
+            'DELETE FROM `patients`            
         WHERE `id`= :id;';
 
-		try {
-			$pdo = Database::connect();
-			// On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
-			$sth = $pdo->prepare($sql);
+        try {
+            $pdo = Database::connect();
+            // On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
+            $sth = $pdo->prepare($sql);
 
-			// bindValue associe une valeur à un marqueur nominatif
-			$sth->bindValue(':id', $id, PDO::PARAM_INT);
+            // bindValue associe une valeur à un marqueur nominatif
+            $sth->bindValue(':id', $id, PDO::PARAM_INT);
 
-			// execute            
-			if ($sth->execute()) {
-				$nbDltUtil = $sth->rowCount();
-				if ($nbDltUtil > 0) {
-					return $nbDltUtil;
-				} else {
-					throw new PDOException('aucun utilisateur supprimé');
-				}
-			} else {
-				throw new PDOException('erreur d\'execution');
-			}
-		} catch (\PDOException $e) {
-			return $e;
-		}
-	}
+            // execute            
+            if ($sth->execute()) {
+                $nbDltUtil = $sth->rowCount();
+                if ($nbDltUtil > 0) {
+                    return $nbDltUtil;
+                } else {
+                    throw new PDOException('aucun utilisateur supprimé');
+                }
+            } else {
+                throw new PDOException('erreur d\'execution');
+            }
+        } catch (\PDOException $e) {
+            return $e;
+        }
+    }
 
+    public static function pagination($id)
+    {
+        $limit = 10;
+        $patientsCount = 'SELECT COUNT(*) FROM `patients`;';
+        $sql = 'SELECT * FROM `patients` ORDER BY `id` LIMIT 10;';
+        $page = ceil($patientsCount / 10); 
+        $offset = ($page * $limit) - $limit;
 
-    
+        try{
+            $pdo = Database::connect();
+            $sth = $pdo->query($sql);
+        }
+    }
 }
-
-
-
-// LUCAS L 0695806847
-
-
