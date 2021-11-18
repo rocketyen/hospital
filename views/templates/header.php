@@ -22,19 +22,21 @@
                 </li>
 
                 <li class="nav-item" title="Inscription">
-                    <a href="/controllers/addPatientController.php" class="nav-link" onClick="ouverture();">Ajouter un patient</a>&nbsp
+                    <a href="/controllers/addPatientController.php" class="nav-link" onClick="ouverture();">Ajout patient</a>&nbsp
                 </li>
 
-                <li class="nav-item" id="Connection">
-                    <a href="/controllers/readPatientController.php" class="nav-link" onClick="ouverture();">Liste des patients</a>&nbsp
+                <li class="nav-item">
+                    <a href="/controllers/readPatientController.php" class="nav-link" onClick="ouverture();">Liste patients</a>&nbsp
                 </li>
 
-                <li class="nav-item" id="Connection">
-                    <a href="/controllers/addAppointmentController.php" class="nav-link" onClick="ouverture();">Définir un rendez-vous</a>&nbsp
+                <li class="nav-item">
+                    <a href="/controllers/addAppointmentController.php" class="nav-link" onClick="ouverture();">Définir rendez-vous</a>&nbsp
                 </li>
-
-                <li class="nav-item" id="Connection">
-                    <a href="/controllers/readAppointmentController.php" class="nav-link" onClick="ouverture();">Liste des rendez-vous</a>&nbsp
+                <li class="nav-item">
+                    <a href="/controllers/readAppointmentController.php" class="nav-link" onClick="ouverture();">Liste rendez-vous</a>&nbsp
+                </li>
+                <li class="nav-item">
+                    <a href="/controllers/addPatAppController.php" class="nav-link" onClick="ouverture();">Ajout patient et rendez-vous</a>&nbsp
                 </li>
                 <form action="/../models/Patients.php">
                     <input type="text" name="search" id="search" />

@@ -52,7 +52,17 @@ class Patient
     public static function read()
     {
         // récupérer tous les utilisateurs
-        $sql = 'SELECT * FROM patients;';
+        $limit = 10;
+        $patientsCount = 'SELECT COUNT(*) FROM `patients`;';
+        $sql = 'SELECT * FROM `patients` ORDER BY `id` ASC LIMIT 1000;';
+        // $page = ceil($patientsCount / $limit);
+        // $offset = ($page * $limit) - $limit;
+
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else {
+            $page = $_GET['page'];
+        }
 
         try {
             $pdo = Database::connect();
@@ -161,25 +171,26 @@ class Patient
         }
     }
 
-    public static function pagination($id)
+    public static function patientCount()
     {
-        $limit = 10;
         $patientsCount = 'SELECT COUNT(*) FROM `patients`;';
-        $sql = 'SELECT * FROM `patients` ORDER BY `id` LIMIT 10;';
-        $page = ceil($patientsCount / 10); 
-        $offset = ($page * $limit) - $limit;
+        try {
+            $pdo = Database::connect();
+            // On fait un prepare ici car on doit récupérer la valeur de l'id de la requete
+            $sth = $pdo->prepare($patientsCount);
+            $sql = 'SELECT COUNT(*) FROM patients;';
 
-        if (!isset($_GET['page'])) {
-            $page = 1;
-        } else{
-            $page = $_GET['page'];
+            $sth = $pdo->query($sql);
+            $result = $sth->fetchColumn();
+            return $result;
+            if($result == false){
+                throw new PDOException('Aucun patient dans la base de données');
+            }
+        } catch (\PDOException $e) {
+            return $e;
         }
-
-        // try{
-        //     $pdo = Database::connect();
-        //     $sth = $pdo->query($sql);
-        // }
     }
 }
+
 
 // 271064
