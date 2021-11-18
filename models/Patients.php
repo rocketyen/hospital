@@ -169,9 +169,17 @@ class Patient
         $page = ceil($patientsCount / 10); 
         $offset = ($page * $limit) - $limit;
 
-        try{
-            $pdo = Database::connect();
-            $sth = $pdo->query($sql);
+        if (!isset($_GET['page'])) {
+            $page = 1;
+        } else{
+            $page = $_GET['page'];
         }
+
+        // try{
+        //     $pdo = Database::connect();
+        //     $sth = $pdo->query($sql);
+        // }
     }
 }
+
+// 271064
