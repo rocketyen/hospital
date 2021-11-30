@@ -62,9 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST)) {
     } else {
         $error['appointDate'] = 'Date de rendez-vous manquante';
     }
+    
         
     if (empty($error)) {         
         $dateHour = "$appointDate $appointHour:00:00";
+        // var_dump($dateHour);
+        // die;
         
         
         $appointments = new Appointments($dateHour, $idPatients);         

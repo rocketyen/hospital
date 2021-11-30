@@ -1,6 +1,5 @@
 <?php
 require_once (dirname(__FILE__).'/../utils/database.php');
-include(dirname(__FILE__).'/../models/Patients.php');
 
 $error = [];
 $errorMess = 'hjkdegfr';
@@ -70,4 +69,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 include(dirname(__FILE__).'/../views/templates/header.php');
 include(dirname(__FILE__).'/../views/users/addPatient.php');
 include(dirname(__FILE__).'/../views/templates/footer.php');
+
+// 06....4253
 

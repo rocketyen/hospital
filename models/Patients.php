@@ -109,7 +109,7 @@ class Patient
     {
         // modifier un utilisateur    
         $sql =
-            'UPDATE `patients` 
+        'UPDATE `patients` 
         SET `lastname` = :lastname, 
         `firstname` = :firstname,
         `birthdate` = :birthdate,
